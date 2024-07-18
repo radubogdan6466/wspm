@@ -1,0 +1,47 @@
+.LeftBar {
+  height: 100vh;
+  background-color: #5e2f90;
+  flex: 0.2;
+  position: fixed;
+  top: 50px;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.LeftBar .title {
+  width: 100%;
+  background-color: #4c2a73;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.LeftBar h3 {
+  color: #f2f2f2;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.rooms {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.room {
+  width: 100%;
+  padding: 10px 0;
+  color: #f2f2f2;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.room:hover {
+  font-size: 20px;
+  background-color: #66438b;
+}
