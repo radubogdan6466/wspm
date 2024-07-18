@@ -1,24 +1,29 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useParams } from "react-router-dom";
 import {
   query,
   collection,
   orderBy,
   onSnapshot,
-  limit,
+  where,
 } from "firebase/firestore";
 import { db } from "../firebase";
 import Message from "./Message";
 import SendMessage from "./SendMessage";
 import "../styles/ChatBox.css";
+
 const ChatBox = () => {
+  const { roomId } = useParams();
   const [messages, setMessages] = useState([]);
   const scroll = useRef();
 
   useEffect(() => {
+    if (!roomId) return;
+
     const q = query(
       collection(db, "messages"),
+      where("roomId", "==", roomId),
       orderBy("createdAt", "desc")
-      // limit(50)
     );
 
     const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
@@ -31,8 +36,8 @@ const ChatBox = () => {
       );
       setMessages(sortedMessages);
     });
-    return () => unsubscribe;
-  }, []);
+    return () => unsubscribe();
+  }, [roomId]);
 
   return (
     <main className="chat-box">
@@ -41,9 +46,8 @@ const ChatBox = () => {
           <Message key={message.id} message={message} />
         ))}
       </div>
-      {/* when a new message enters the chat, the screen scrolls down to the scroll div */}
       <span ref={scroll}></span>
-      <SendMessage scroll={scroll} />
+      <SendMessage scroll={scroll} roomId={roomId} />
     </main>
   );
 };

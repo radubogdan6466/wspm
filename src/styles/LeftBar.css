@@ -45,3 +45,34 @@
   font-size: 20px;
   background-color: #66438b;
 }
+
+.add-room-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  margin-bottom: 50px;
+}
+
+.new-room-input {
+  width: 80%;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+}
+
+.add-room-button {
+  width: 80%;
+  padding: 5px;
+  background-color: #4c2a73;
+  color: #f2f2f2;
+  border: none;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.add-room-button:hover {
+  background-color: #66438b;
+}
