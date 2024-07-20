@@ -1,0 +1,15 @@
+.PostBox {
+  margin-left: 120px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-post-button {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

@@ -1,0 +1,33 @@
+/* AddPost.css */
+.AddPost {
+  margin: 20px;
+}
+
+.add-post-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-post-input {
+  height: 100px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.add-post-button,
+.cancel-post-button {
+  margin: 5px 0;
+  padding: 10px;
+}
+
+.add-post-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+}
+
+.cancel-post-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+}

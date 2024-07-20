@@ -1,37 +1,79 @@
+/* Stiluri generale pentru formular */
 .send-message {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   position: fixed;
-  bottom: 0px;
-  width: calc(100% - 80px);
-  background-color: #5e2f90;
+  bottom: 0;
+  right: 0;
+  left: 120px;
+
+  background-color: #fff;
+  padding: 10px 20px;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Asigură că formularul este deasupra altor elemente */
 }
-.send-message > input {
-  height: 40px;
-  padding: 10px 10px;
-  border-radius: 5px 0 0 5px;
-  border: none;
-  flex-grow: 1;
-  background-color: white;
-  color: #1c2c4c;
-  font-size: 1rem;
-  width: 80%;
-}
-.send-message > input:placeholder {
-  color: #ddd;
-}
-.send-message > :is(input, button):focus {
+
+/* Input pentru mesaj */
+.form-input__input {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
   outline: none;
-  border-bottom: 1px solid #7cc5d9;
+  transition: border-color 0.3s;
 }
-.send-message > button {
-  height: 40px;
-  padding: 5px 10px;
-  border-radius: 0 5px 5px 0;
-  color: #242443;
-  border: 1px solid #5e2f90;
-  background-color: #5e2f90;
-  font-weight: 600;
-  width: 20%;
+
+/* Erori pentru input */
+.form-input__input.error {
+  border-color: #e74c3c;
+}
+
+/* Stiluri pentru butonul de trimitere */
+.send-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px; /* Dimensiunea pictogramei */
+  color: #3498db;
+  transition: color 0.3s;
+  margin-left: 10px; /* Spațiu între input și buton */
+}
+
+/* Hover pe butonul de trimitere */
+.send-button:hover {
+  color: #2980b9;
+}
+
+/* Stiluri pentru pictograma de trimitere */
+.send-button svg {
+  font-size: 20px; /* Ajustează dimensiunea pictogramei dacă este necesar */
+}
+
+/* Stiluri pentru inputul de fișiere personalizat */
+.file-input-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 20px; /* Dimensiunea pictogramei de atașare */
+  color: #3498db;
+  transition: color 0.3s;
+  margin-right: 10px; /* Spațiu între inputul de fișiere și inputul de mesaj */
+}
+
+.file-input-label:hover {
+  color: #2980b9;
+}
+
+/* Ascunde inputul de fișiere standard */
+.file-input {
+  display: none;
+}
+
+/* Ascunde eticheta pentru accesibilitate */
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
 }

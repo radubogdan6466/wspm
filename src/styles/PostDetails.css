@@ -1,0 +1,103 @@
+/* PostDetails.css */
+
+.Post-Container {
+  width: 100%;
+  margin-left: 120px;
+}
+
+.Post-Head {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 10px;
+  padding: 20px 20px 0 20px;
+}
+.PostInner {
+}
+
+.post-head-location {
+  display: flex;
+  align-items: center;
+}
+.PostLocationSpan {
+  padding-left: 5px;
+}
+
+.post-header-location .icon {
+  margin-right: 5px;
+}
+
+.post-head-date {
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+}
+
+.post-head-date span {
+  padding-right: 5px;
+}
+
+.post-header-SpanDot {
+  margin: 0 5px;
+}
+
+.PostContent {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #272323;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.HLine {
+  border: 0;
+  border-top: 1px solid #9d9d9d;
+  margin: 10px 0;
+  opacity: 0.5;
+}
+
+.postFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.Post-Tools,
+.Post-Activity {
+  display: flex;
+  align-items: center;
+  color: #777;
+}
+
+.Post-Tools .post-icon,
+.Post-Activity .post-icon {
+  color: #777;
+}
+
+.Post-Tools .post-icon:last-child,
+.Post-Activity .post-icon:last-child {
+  color: #777;
+}
+
+.Post-Activity {
+  color: #777;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #777;
+}
+.post-icon-replies {
+  padding-right: 10px;
+}
+.post-icon-actions {
+  padding-right: 10px;
+  padding-left: 10px;
+}

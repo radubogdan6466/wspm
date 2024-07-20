@@ -1,0 +1,71 @@
+.posts-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.post-item {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  width: 900px;
+}
+
+.post-header {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  color: #777;
+  opacity: 0.6;
+  font-size: smaller;
+}
+.post-header-location-icon {
+  margin-right: 10px;
+  font-weight: bold;
+}
+.post-header-date {
+  font-weight: 500;
+}
+.post-header-SpanDot {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.post-location {
+  font-weight: bold;
+  padding: 2px;
+}
+
+.post-content {
+  margin-bottom: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  word-spacing: 2px;
+  font-weight: 400;
+  color: #272323;
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-actions,
+.post-reactions {
+  display: flex;
+  align-items: center;
+}
+
+.post-icon {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.post-icon:hover {
+  color: #007bff;
+}
+.hrLine {
+  color: gray !important;
+  opacity: 0.3;
+  padding-bottom: 2px;
+}

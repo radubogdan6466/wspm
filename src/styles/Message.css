@@ -1,0 +1,39 @@
+/*MESSAGE.JS*/
+.chat-bubble {
+  border-radius: 20px 20px 20px 0;
+  padding: 5px;
+  background-color: #7cc5d9;
+  color: #1c2c4c;
+  width: fit-content;
+  max-width: 70%;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+.chat-bubble.right {
+  margin-left: auto;
+  border-radius: 20px 20px 0 20px;
+  background-color: #fff;
+}
+.chat-bubble__left {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.user-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 0.7rem;
+  color: #1c2c4c;
+}
+.user-message {
+  word-break: break-all;
+  margin-left: 0;
+  padding: 0;
+}
+.message-time {
+  display: block;
+  text-align: right;
+  font-size: 9px;
+}

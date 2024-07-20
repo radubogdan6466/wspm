@@ -1,0 +1,55 @@
+/* RepliesList.css */
+
+/* Stiluri pentru lista de răspunsuri */
+.replies-list {
+  margin-left: 40px; /* Spațiu pentru indentare */
+  margin-top: 5px;
+  /* Spațiu între comentariul principal și răspunsuri */
+}
+
+.reply-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  padding: 10px 0;
+}
+
+.reply-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #dbdbdb; /* Culoare de fundal diferită pentru răspunsuri */
+  justify-content: space-between;
+  border-radius: 25px;
+  padding: 10px;
+  box-sizing: border-box; /* Include padding în dimensiunea totală a elementului */
+  word-break: break-word; /* Asigură că cuvintele lungi se vor rupe */
+  overflow-wrap: break-word; /* Rupe cuvintele lungi pentru a se încadra în container */
+}
+
+.reply {
+  word-wrap: break-word; /* Înfășoară textul în interiorul containerului */
+  overflow-wrap: break-word; /* Rupe cuvintele lungi pentru a se încadra în container */
+  color: #272323;
+  white-space: normal; /* Asigură că textul se va înfășura corect */
+}
+
+.reply-date {
+  font-size: 12px;
+  margin-left: 20px;
+
+  color: #999;
+  margin-top: 5px; /* Spațiu între textul răspunsului și data */
+}
+.reply-content-only {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.reply-content-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}

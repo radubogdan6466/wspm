@@ -6,10 +6,13 @@ import {
   orderBy,
   onSnapshot,
   where,
+  deleteDoc,
+  doc,
 } from "firebase/firestore";
 import { db } from "../firebase";
 import Message from "./Message";
 import SendMessage from "./SendMessage";
+import TypingIndicator from "./TypingIndicator";
 import "../styles/ChatBox.css";
 
 const ChatBox = () => {
@@ -36,15 +39,34 @@ const ChatBox = () => {
       );
       setMessages(sortedMessages);
     });
+
     return () => unsubscribe();
   }, [roomId]);
 
+  const handleDeleteMessage = async (messageId) => {
+    const messageRef = doc(db, "messages", messageId);
+    try {
+      await deleteDoc(messageRef);
+      console.log("Message deleted successfully.");
+    } catch (error) {
+      console.error("Error deleting message: ", error);
+    }
+  };
+
   return (
     <main className="chat-box">
+      <div>
+        <input className="SearchInChat" placeholder="Search" />
+      </div>
       <div className="messages-wrapper">
         {messages?.map((message) => (
-          <Message key={message.id} message={message} />
+          <Message
+            key={message.id}
+            message={message}
+            onDelete={handleDeleteMessage}
+          />
         ))}
+        <TypingIndicator roomId={roomId} />
       </div>
       <span ref={scroll}></span>
       <SendMessage scroll={scroll} roomId={roomId} />

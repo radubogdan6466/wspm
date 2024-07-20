@@ -11,3 +11,28 @@
   width: 100%;
   z-index: 1;
 }
+.NavBar h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.sign-out {
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.sign-in {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.sign-in img {
+  height: 40px;
+  width: auto;
+}
+
+.current-room {
+  margin: 0;
+  font-size: 1rem;
+}

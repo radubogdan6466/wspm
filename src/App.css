@@ -44,9 +44,25 @@ input {
   min-height: 100vh;
   background-color: #f2f2f2;
   color: #4c768d;
-  padding-top: 60px;
+  padding-top: 50px;
 }
 
 .AppBody {
+  padding: 0;
   display: flex;
+}
+.WelcomeDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 140px;
+  width: 100%;
+  text-align: center;
+
+  /* max-width: calc(100% - 140px); */
+}
+.WelcomeMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
