@@ -56,8 +56,16 @@
   display: flex;
   justify-content: space-between;
   padding-right: 20px;
+}
+.replies-number-span {
+  font-size: 14px;
   color: #2980b9;
 }
+.replies-toggle-button {
+  cursor: pointer;
+  padding: 2px;
+}
+
 .comment-icon {
   padding-left: 10px;
   padding-right: 10px;

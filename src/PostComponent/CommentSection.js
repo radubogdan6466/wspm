@@ -11,7 +11,6 @@ import {
   updateDoc,
   increment,
 } from "firebase/firestore";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPaperPlane,
@@ -19,6 +18,7 @@ import {
   faThumbsDown,
   faChevronDown,
   faReply,
+  faChevronUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { formatDistanceToNow } from "date-fns";
 import "../styles/CommentSection.css";
@@ -28,6 +28,7 @@ const CommentSection = ({ postId, displayName, onCommentAdded }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [replyTo, setReplyTo] = useState(null); // Stare pentru reply-uri
+  const [expandedCommentId, setExpandedCommentId] = useState(null); // Stare pentru comentariul extins
 
   useEffect(() => {
     const commentsQuery = query(
@@ -57,6 +58,7 @@ const CommentSection = ({ postId, displayName, onCommentAdded }) => {
         content: newComment.trim(),
         createdBy: displayName,
         createdAt: serverTimestamp(),
+        repliesCount: 0, // Inițial, numărul de răspunsuri este 0
       };
 
       await addDoc(collection(db, "posts", postId, "comments"), commentData);
@@ -97,9 +99,10 @@ const CommentSection = ({ postId, displayName, onCommentAdded }) => {
       setNewComment("");
       setReplyTo(null);
 
-      const postRef = doc(db, "posts", postId);
-      await updateDoc(postRef, {
-        replies: increment(1),
+      // Actualizăm numărul de răspunsuri la comentariul respectiv
+      const commentRef = doc(db, "posts", postId, "comments", replyTo);
+      await updateDoc(commentRef, {
+        repliesCount: increment(1),
       });
 
       if (onCommentAdded) {
@@ -108,6 +111,10 @@ const CommentSection = ({ postId, displayName, onCommentAdded }) => {
     } catch (e) {
       console.error("Error adding reply: ", e);
     }
+  };
+
+  const handleToggleReplies = (commentId) => {
+    setExpandedCommentId(expandedCommentId === commentId ? null : commentId);
   };
 
   return (
@@ -142,11 +149,22 @@ const CommentSection = ({ postId, displayName, onCommentAdded }) => {
                     })
                   : "Unknown date"}
               </span>
-              <div className="replies-number-div">
-                <span className="replies-number-span">9 replies</span>
-              </div>
+              {comment.repliesCount > 0 && (
+                <div className="replies-number-div">
+                  <p
+                    className="replies-toggle-button"
+                    onClick={() => handleToggleReplies(comment.id)}
+                  >
+                    <span className="replies-number-span">
+                      {comment.repliesCount} replies
+                    </span>
+                  </p>
+                </div>
+              )}
             </div>
-            <RepliesList postId={postId} commentId={comment.id} />
+            {expandedCommentId === comment.id && (
+              <RepliesList postId={postId} commentId={comment.id} />
+            )}
           </div>
         ))}
       </div>

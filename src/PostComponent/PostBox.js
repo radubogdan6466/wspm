@@ -42,7 +42,12 @@ const PostBox = ({ displayName }) => {
       <Routes>
         <Route
           path="/"
-          element={<PostList onSelectPost={handlePostSelect} />}
+          element={
+            <PostList
+              onSelectPost={handlePostSelect}
+              displayName={displayName}
+            />
+          }
         />
         <Route
           path="/post/:postId"
