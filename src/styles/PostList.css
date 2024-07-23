@@ -1,53 +1,65 @@
+/* PostList.css */
+
 .posts-list {
-  list-style-type: none;
   padding: 0;
+  background-color: #ced0d6;
 }
 
 .post-item {
-  background-color: #f9f9f9;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   margin-bottom: 10px;
-  width: 900px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
-.post-header {
+.Post-List-post-header {
   display: flex;
   justify-content: flex-start;
-  margin-bottom: 10px;
   color: #777;
   opacity: 0.6;
   font-size: smaller;
 }
+
 .post-header-location-icon {
   margin-right: 10px;
   font-weight: bold;
 }
+.Post-List-Ion-Label {
+}
+
 .post-header-date {
   font-weight: 500;
 }
+
 .post-header-SpanDot {
   margin-right: 10px;
   font-weight: bold;
 }
 
-.post-location {
-  font-weight: bold;
-  padding: 2px;
-}
-
-.post-content {
-  margin-bottom: 10px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+.Post-List-post-content {
   word-spacing: 2px;
-  font-weight: 400;
   color: #272323;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
+.Post-List-Content {
+  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+  font-weight: 500;
+}
 .post-footer {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+.PostList-Ion-Card-Header {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0;
+  width: 60%;
 }
 
 .post-actions,
@@ -64,8 +76,21 @@
 .post-icon:hover {
   color: #007bff;
 }
+
+.post-icon-button {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: transparent;
+}
+
+.post-icon-button.active {
+  color: #007bff;
+}
+
 .hrLine {
-  color: gray !important;
+  color: #ced0d6;
   opacity: 0.3;
-  padding-bottom: 2px;
+  margin: 0;
+  padding: 0;
 }

@@ -27,7 +27,7 @@
 .Comment-content-actions {
   display: flex;
   flex-direction: row;
-  background-color: #dbdbdb;
+  background-color: #eff1f3;
   justify-content: space-between;
   border-radius: 25px;
   padding: 10px;
@@ -78,13 +78,12 @@
 
 /* Stiluri generale pentru formular */
 .comment-form {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: fixed;
   bottom: 0;
-  right: 0;
-  left: 120px;
   background-color: #fff;
   padding: 10px 20px;
   border-top: 1px solid #ddd;

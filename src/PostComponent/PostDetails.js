@@ -3,7 +3,17 @@ import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
-import "../styles/PostDetails.css";
+import {
+  IonContent,
+  IonPage,
+  IonCard,
+  IonCardHeader,
+  IonCardContent,
+  IonItem,
+  IonLabel,
+  IonIcon,
+  IonText,
+} from "@ionic/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faComment,
@@ -11,9 +21,9 @@ import {
   faThumbsUp,
   faThumbsDown,
   faLocationDot,
-  faDotCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import CommentSection from "./CommentSection";
+import "../styles/PostDetails.css";
 
 const PostDetails = ({ displayName }) => {
   const { postId } = useParams();
@@ -35,48 +45,55 @@ const PostDetails = ({ displayName }) => {
   if (!post) {
     return <div>Loading...</div>;
   }
-  //   console.log("Display Name in PostDetails:", displayName);
 
   return (
-    <div className="Post-Container">
-      <div className="PostInner">
-        <div className="Post-Head">
-          <span className="post-head-location">
-            <FontAwesomeIcon icon={faLocationDot} className="post-icon" />
-            <p className="PostLocationSpan"> {post.location}</p>
-          </span>
-          <span className="post-head-date">
-            <span>•</span>
-            {post.createdAt
-              ? formatDistanceToNow(post.createdAt.toDate(), {
-                  addSuffix: true,
-                })
-              : ""}
-          </span>
-        </div>
-        <div className="PostContent">
-          <p>{post.content}</p>
-        </div>
-        <hr className="HLine" />
-        <div className="postFooter">
-          <div className="Post-Tools">
-            <FontAwesomeIcon icon={faComment} className="post-icon-replies" />
-            {post.replies}
-          </div>
-          <div className="Post-Activity">
-            <FontAwesomeIcon icon={faThumbsUp} className="post-icon-actions" />
-            {post.likes}
-            <FontAwesomeIcon
-              icon={faThumbsDown}
-              className="post-icon-actions"
-            />
-            {post.dislikes}
-          </div>
-        </div>
-        <hr className="HLine" />
-      </div>
-      <CommentSection postId={postId} displayName={displayName} />{" "}
-    </div>
+    <IonPage>
+      <IonContent className="Post-Container">
+        <IonCard className="PostInner">
+          <IonCardHeader className="Post-Head">
+            <IonItem lines="none" className="post-head-location">
+              <FontAwesomeIcon icon={faLocationDot} className="post-icon" />
+              <IonLabel className="PostLocationSpan">{post.location}</IonLabel>
+              <IonLabel className="post-head-date">
+                <span>•</span>
+                {post.createdAt
+                  ? formatDistanceToNow(post.createdAt.toDate(), {
+                      addSuffix: true,
+                    })
+                  : ""}
+              </IonLabel>
+            </IonItem>
+          </IonCardHeader>
+
+          <IonCardContent className="PostContent">
+            <IonText>{post.content}</IonText>
+          </IonCardContent>
+
+          <hr className="HLine" />
+
+          <IonCardContent className="postFooter">
+            <IonItem lines="none" className="Post-Tools">
+              <FontAwesomeIcon icon={faComment} className="post-icon-replies" />
+              {post.replies}
+            </IonItem>
+            <IonItem lines="none" className="Post-Activity">
+              <FontAwesomeIcon
+                icon={faThumbsUp}
+                className="post-icon-actions"
+              />
+              {post.likes}
+              <FontAwesomeIcon
+                icon={faThumbsDown}
+                className="post-icon-actions"
+              />
+              {post.dislikes}
+            </IonItem>
+          </IonCardContent>
+          <hr className="HLine" />
+        </IonCard>
+        <CommentSection postId={postId} displayName={displayName} />
+      </IonContent>
+    </IonPage>
   );
 };
 

@@ -1,7 +1,19 @@
-// AddPost.js
 import React, { useState } from "react";
 import { db } from "../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import {
+  IonModal,
+  IonButton,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonContent,
+  IonPage,
+  IonText,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+} from "@ionic/react";
 import "../styles/AddPost.css";
 
 const AddPost = ({ displayName, onClose }) => {
@@ -24,30 +36,47 @@ const AddPost = ({ displayName, onClose }) => {
         dislikes: 0,
       });
       setNewPost("");
-      onClose();
+      onClose(); // Close the AddPost button
     } catch (e) {
       console.error("Error adding post: ", e);
     }
   };
 
   return (
-    <div className="AddPost">
-      <h3>Add a New Post</h3>
-      <form onSubmit={handleAddPost} className="add-post-form">
-        <textarea
-          placeholder="Write a post..."
-          value={newPost}
-          onChange={(e) => setNewPost(e.target.value)}
-          className="new-post-input"
-        />
-        <button type="submit" className="add-post-button">
-          Post
-        </button>
-        <button type="button" className="cancel-post-button" onClick={onClose}>
-          Cancel
-        </button>
-      </form>
-    </div>
+    <IonModal isOpen={true} onDidDismiss={onClose}>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Add a New Post</IonTitle>
+          <IonButton slot="end" onClick={onClose}>
+            Close
+          </IonButton>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent>
+        <form onSubmit={handleAddPost} className="add-post-form">
+          <IonItem>
+            <IonLabel position="floating">Your Post</IonLabel>
+            <IonInput
+              placeholder="Write a post..."
+              value={newPost}
+              onIonInput={(e) => setNewPost(e.detail.value)}
+              className="new-post-input"
+            />
+          </IonItem>
+          <IonButton type="submit" expand="full" className="add-post-button">
+            Post
+          </IonButton>
+          <IonButton
+            type="button"
+            expand="full"
+            className="cancel-post-button"
+            onClick={onClose}
+          >
+            Cancel
+          </IonButton>
+        </form>
+      </IonContent>
+    </IonModal>
   );
 };
 

@@ -1,0 +1,79 @@
+/* Welcome.css */
+
+/* General page styling */
+.welcome-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: #f5f5f5; /* Light grey background */
+  padding: 20px;
+}
+
+.welcome-card {
+  max-width: 500px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background: #ffffff; /* White background for card */
+  margin: auto;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+}
+
+.welcome-description {
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.google-signin-button {
+  --background: #4285f4;
+  --color: white;
+  margin: 20px auto;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.google-signin-img {
+  width: 160px;
+  height: auto;
+}
+
+.or-continue-text {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.username-input-item {
+  margin: 20px 0;
+}
+
+.username-input-item ion-label {
+  color: #333; /* Dark color for the label */
+}
+
+.username-input-item ion-input {
+  padding: 12px;
+  border-radius: 8px;
+  --border-color: #ddd; /* Light grey border */
+  --background: #fff; /* White background for input */
+}
+
+.guest-button {
+  --background: #009688;
+  --color: white;
+  margin: 20px auto;
+  border-radius: 8px;
+  padding: 14px;
+}

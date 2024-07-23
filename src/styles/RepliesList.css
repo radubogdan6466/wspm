@@ -18,7 +18,7 @@
 .reply-content {
   display: flex;
   flex-direction: column;
-  background-color: #dbdbdb; /* Culoare de fundal diferită pentru răspunsuri */
+  background-color: #eff1f3; /* Culoare de fundal diferită pentru răspunsuri */
   justify-content: space-between;
   border-radius: 25px;
   padding: 10px;
