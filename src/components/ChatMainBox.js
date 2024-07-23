@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import {
+  Route,
+  Redirect,
+  Switch,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
 import {
   IonPage,
   IonContent,
@@ -7,54 +13,61 @@ import {
   IonFabButton,
   IonIcon,
 } from "@ionic/react";
-import PostList from "./PostList";
-import AddPost from "./AddPost";
-import PostDetails from "./PostDetails";
+import RoomList from "./RoomList";
+import AddRoom from "./AddRoom";
+import ChatBox from "./ChatBox";
 import { add as addIcon } from "ionicons/icons";
 import "../styles/PostBox.css";
 const ChatMainBox = ({ displayName }) => {
-  const [isAddingPost, setIsAddingPost] = useState(false);
-  const navigate = useNavigate();
+  const [isAddingRoom, setIsAddingRoom] = useState(false);
+  const history = useHistory();
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === "/posts") {
-      setIsAddingPost(false);
+    if (location.pathname === "/rooms") {
+      setIsAddingRoom(false);
     }
   }, [location.pathname]);
 
-  const handleAddPostClick = () => {
-    setIsAddingPost(true);
+  const handleAddRoomClick = () => {
+    setIsAddingRoom(true);
   };
 
-  const handlePostSelect = (postId) => {
-    navigate(`/post/${postId}`);
+  const handleRoomSelect = (roomId) => {
+    history.push(`/room/${roomId}`);
   };
 
-  const handleCloseAddPost = () => {
-    setIsAddingPost(false);
+  const handleCloseAddRoom = () => {
+    setIsAddingRoom(false);
   };
 
   return (
-    <IonPage className="RoomBox">
-      <IonContent className="RoomBox">
-        <Routes>
+    <IonPage className="PostBox">
+      <IonContent className="PostBox">
+        {!isAddingRoom && (
+          <IonFab vertical="bottom" horizontal="end" slot="fixed">
+            <IonFabButton onClick={handleAddRoomClick}>
+              <IonIcon icon={addIcon} />
+            </IonFabButton>
+          </IonFab>
+        )}
+        <Switch>
           <Route
             path="/"
             element={
-              <PostList
-                onSelectPost={handlePostSelect}
+              <RoomList
+                onSelectRoom={handleRoomSelect}
                 displayName={displayName}
               />
             }
           />
           <Route
             path="/room/:roomId"
-            element={<PostDetails displayName={displayName} />}
+            element={<ChatBox displayName={displayName} />}
           />
-        </Routes>
-        {isAddingPost && (
-          <AddPost displayName={displayName} onClose={handleCloseAddPost} />
+        </Switch>
+        {isAddingRoom && (
+          <AddRoom displayName={displayName} onClose={handleCloseAddRoom} />
         )}
       </IonContent>
     </IonPage>

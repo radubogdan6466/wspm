@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams,
+  useLocation,
+  useHistory,
+} from "react-router-dom";
+import { IonReactRouter } from "@ionic/react-router";
+
 import {
   IonPage,
   IonContent,
@@ -14,7 +25,7 @@ import { add as addIcon } from "ionicons/icons";
 import "../styles/PostBox.css";
 const PostBox = ({ displayName }) => {
   const [isAddingPost, setIsAddingPost] = useState(false);
-  const navigate = useNavigate();
+  const history = useHistory();
   const location = useLocation();
 
   useEffect(() => {
@@ -28,7 +39,7 @@ const PostBox = ({ displayName }) => {
   };
 
   const handlePostSelect = (postId) => {
-    navigate(`/post/${postId}`);
+    history.push(`/post/${postId}`);
   };
 
   const handleCloseAddPost = () => {
@@ -36,35 +47,33 @@ const PostBox = ({ displayName }) => {
   };
 
   return (
-    <IonPage className="PostBox">
-      <IonContent className="PostBox">
-        {!isAddingPost && (
-          <IonFab vertical="bottom" horizontal="end" slot="fixed">
-            <IonFabButton onClick={handleAddPostClick}>
-              <IonIcon icon={addIcon} />
-            </IonFabButton>
-          </IonFab>
-        )}
-        <Routes>
-          <Route
-            path="/"
-            element={
+    <IonReactRouter>
+      <IonPage className="PostBox">
+        <IonContent className="PostBox">
+          {!isAddingPost && (
+            <IonFab vertical="bottom" horizontal="end" slot="fixed">
+              <IonFabButton onClick={handleAddPostClick}>
+                <IonIcon icon={addIcon} />
+              </IonFabButton>
+            </IonFab>
+          )}
+          <Switch>
+            <Route path="/">
               <PostList
                 onSelectPost={handlePostSelect}
                 displayName={displayName}
               />
-            }
-          />
-          <Route
-            path="/post/:postId"
-            element={<PostDetails displayName={displayName} />}
-          />
-        </Routes>
-        {isAddingPost && (
-          <AddPost displayName={displayName} onClose={handleCloseAddPost} />
-        )}
-      </IonContent>
-    </IonPage>
+            </Route>
+            <Route path="/post/:postId">
+              <PostDetails displayName={displayName} />
+            </Route>
+          </Switch>
+          {isAddingPost && (
+            <AddPost displayName={displayName} onClose={handleCloseAddPost} />
+          )}
+        </IonContent>
+      </IonPage>
+    </IonReactRouter>
   );
 };
 

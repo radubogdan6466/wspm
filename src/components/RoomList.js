@@ -12,42 +12,42 @@ import {
 import { IonList, IonItem, IonLabel, IonInput, IonButton } from "@ionic/react";
 
 const RoomList = ({ displayName, currentView }) => {
-  const [newRoom, setNewRoom] = useState("");
+  //   const [newRoom, setNewRoom] = useState("");
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [rooms, setRooms] = useState([]);
   const [error, setError] = useState("");
 
-  const handleAddRoom = async (event) => {
-    event.preventDefault();
-    if (newRoom.trim() === "") {
-      alert("Enter a valid room name");
-      return;
-    }
-    try {
-      const q = query(
-        collection(db, "rooms"),
-        where("name", "==", newRoom.trim())
-      );
-      const querySnapshot = await getDocs(q);
+  //   const handleAddRoom = async (event) => {
+  //     event.preventDefault();
+  //     if (newRoom.trim() === "") {
+  //       alert("Enter a valid room name");
+  //       return;
+  //     }
+  //     try {
+  //       const q = query(
+  //         collection(db, "rooms"),
+  //         where("name", "==", newRoom.trim())
+  //       );
+  //       const querySnapshot = await getDocs(q);
 
-      if (!querySnapshot.empty) {
-        setError("Room with this name already exists");
-        return;
-      }
+  //       if (!querySnapshot.empty) {
+  //         setError("Room with this name already exists");
+  //         return;
+  //       }
 
-      await addDoc(collection(db, "rooms"), {
-        name: newRoom.trim(),
-        createdBy: displayName,
-        createdAt: serverTimestamp(),
-      });
+  //       await addDoc(collection(db, "rooms"), {
+  //         name: newRoom.trim(),
+  //         createdBy: displayName,
+  //         createdAt: serverTimestamp(),
+  //       });
 
-      setNewRoom("");
-      setError("");
-    } catch (e) {
-      console.error("Error adding room: ", e);
-      setError("Error adding room");
-    }
-  };
+  //       setNewRoom("");
+  //       setError("");
+  //     } catch (e) {
+  //       console.error("Error adding room: ", e);
+  //       setError("Error adding room");
+  //     }
+  //   };
   const handleRoomClick = (roomId) => {
     setSelectedRoom(roomId);
   };
@@ -84,7 +84,7 @@ const RoomList = ({ displayName, currentView }) => {
           </IonItem>
         ))
       )}
-      <form onSubmit={handleAddRoom} className="add-room-form">
+      {/* <form onSubmit={handleAddRoom} className="add-room-form">
         <IonItem>
           <IonInput
             type="text"
@@ -98,7 +98,7 @@ const RoomList = ({ displayName, currentView }) => {
           Add
         </IonButton>
         {error && <IonLabel color="danger">{error}</IonLabel>}
-      </form>
+      </form> */}
     </IonList>
   );
 };

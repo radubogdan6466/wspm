@@ -8,7 +8,15 @@ import {
   serverTimestamp,
   getDocs,
 } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams,
+  useHistory,
+} from "react-router-dom";
 import {
   IonButton,
   IonInput,
@@ -21,23 +29,24 @@ import {
 } from "@ionic/react";
 import "../styles/LeftBar.css";
 import RoomList from "./RoomList";
+import ChatMainBox from "./ChatMainBox";
 
 const LeftBar = ({ displayName, setCurrentView, currentView }) => {
-  const navigate = useNavigate();
+  const history = useHistory();
 
-  useEffect(() => {
-    if (currentView !== "rooms" && currentView !== "posts") {
-      setCurrentView("rooms");
-    }
-  }, [currentView, setCurrentView]);
+  // useEffect(() => {
+  //   if (currentView !== "rooms" && currentView !== "posts") {
+  //     setCurrentView("rooms");
+  //   }
+  // }, [currentView, setCurrentView]);
 
   const handlePostsView = () => {
     setCurrentView("posts");
-    navigate("/posts");
+    history.push("/posts");
   };
   const handleRoomsView = () => {
     setCurrentView("rooms");
-    navigate("/rooms");
+    history.push("/rooms");
   };
 
   return (
@@ -61,11 +70,11 @@ const LeftBar = ({ displayName, setCurrentView, currentView }) => {
           Posts
         </IonButton>
 
-        {currentView === "rooms" && (
+        {/* {currentView === "rooms" && (
           <>
             <RoomList currentView={currentView} displayName={displayName} />
           </>
-        )}
+        )} */}
       </IonContent>
     </IonContent>
   );
